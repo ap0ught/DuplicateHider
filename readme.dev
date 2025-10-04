@@ -1,0 +1,241 @@
+# DuplicateHider - Developer Documentation
+
+This document provides information for developers who want to contribute to or build DuplicateHider.
+
+## Prerequisites
+
+- **Visual Studio 2019 or later** (or any IDE that supports .NET Framework 4.6.2)
+- **.NET Framework 4.6.2** or higher
+- **Playnite** installed (for testing)
+- **Git** for version control
+
+## Project Structure
+
+```
+DuplicateHider/
+├── source/                      # Main source code
+│   ├── Cache/                   # Caching implementations
+│   ├── Controls/                # Custom WPF controls
+│   ├── Converters/              # WPF value converters
+│   ├── Data/                    # Data models
+│   ├── Filters/                 # Game filtering logic
+│   ├── icons/                   # Built-in source icons
+│   ├── Localization/            # Translation files (XAML)
+│   ├── Models/                  # View models and data structures
+│   ├── ViewModels/              # MVVM view models
+│   ├── Views/                   # XAML views
+│   ├── Windows/                 # Window implementations
+│   ├── DuplicateHiderPlugin.cs  # Main plugin class
+│   ├── DuplicateHiderSettings.cs # Settings model
+│   └── extension.yaml           # Plugin manifest
+├── UiIntegrationExamples/       # Theme integration examples
+├── README.md                    # User documentation
+├── CHANGELOG.md                 # Version history
+└── LICENSE                      # MIT License
+
+```
+
+## Dependencies
+
+The project uses the following NuGet packages:
+
+- **PlayniteSDK** (v6.2.0) - Playnite API for plugin development
+- **Newtonsoft.Json** (v10.0.3) - JSON serialization
+- **gong-wpf-dragdrop** (v2.4.1) - Drag and drop functionality
+
+Additional SDKs (referenced locally):
+- **QuickSearchSDK** - Integration with QuickSearch extension
+- **StartPage.SDK** - Integration with StartPage extension
+
+## Building the Project
+
+### Using Visual Studio
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/felixkmh/DuplicateHider.git
+   cd DuplicateHider
+   ```
+
+2. Open `source/DuplicateHider.sln` in Visual Studio
+
+3. Restore NuGet packages:
+   - Visual Studio will automatically restore packages on build
+   - Or manually: Right-click solution → "Restore NuGet Packages"
+
+4. Build the solution:
+   - Press `Ctrl+Shift+B` or
+   - Menu: Build → Build Solution
+
+5. Output will be in `source/bin/Debug/` or `source/bin/Release/`
+
+### Using MSBuild (Command Line)
+
+```bash
+cd source
+msbuild DuplicateHider.sln /p:Configuration=Release
+```
+
+### Post-Build Process
+
+The project includes a post-build event that uses Playnite's Toolbox to package the extension:
+```
+%LOCALAPPDATA%\Playnite\Toolbox.exe pack $(ProjectDir)$(OutDir) $(ProjectDir)bin
+```
+
+This creates a `.pext` file that can be installed in Playnite.
+
+## Installing for Development
+
+1. Build the project in Debug or Release mode
+2. Copy the output from `source/bin/Debug/` (or Release) to Playnite's extension folder:
+   ```
+   %APPDATA%\Playnite\Extensions\felixkmh_DuplicateHider_Plugin\
+   ```
+3. Restart Playnite to load the extension
+
+### Hot Reload During Development
+
+For faster iteration:
+1. Build the project
+2. Use Playnite's extension reload feature (if available)
+3. Or restart Playnite
+
+## Debugging
+
+1. In Visual Studio, set up debugging:
+   - Right-click the project → Properties
+   - Go to the Debug tab
+   - Set "Start external program" to your Playnite executable path
+     (typically `C:\Program Files\Playnite\Playnite.DesktopApp.exe`)
+
+2. Set breakpoints in your code
+
+3. Press `F5` to start debugging
+   - Playnite will launch and load your extension
+   - Your breakpoints will be hit when the code executes
+
+## Code Structure
+
+### Main Components
+
+- **DuplicateHiderPlugin.cs**: Core plugin class implementing `GenericPlugin`
+  - Manages game indexing and duplicate detection
+  - Handles UI integration with themes
+  - Provides menu items and commands
+
+- **DuplicateHiderSettings.cs**: Plugin settings model
+  - Priority lists for sources
+  - Game filters
+  - UI integration options
+
+- **UiIntegration.cs**: Custom UI elements for theme integration
+  - SourceSelector controls
+  - ContentControl implementations
+
+### Key Features
+
+1. **Game Indexing**: Uses async/parallel processing to build duplicate indices
+2. **Priority System**: Ranks game copies based on source priority and installation status
+3. **UI Integration**: Provides custom WPF controls for theme developers
+4. **Icon Management**: Caches and serves source icons (built-in, theme, or user-provided)
+
+## Localization
+
+Translation files are located in `source/Localization/` as XAML resource dictionaries.
+
+To add a new language:
+1. Copy an existing localization file (e.g., `en_US.xaml`)
+2. Rename it with the appropriate language code
+3. Translate the string values
+4. The plugin will automatically detect and load it
+
+Translations are managed via [Crowdin](https://crowdin.com/project/duplicatehider).
+
+## Testing
+
+Currently, the project does not have automated unit tests. Testing is done manually:
+
+1. Build and install the extension
+2. Launch Playnite
+3. Test various scenarios:
+   - Adding duplicate games
+   - Changing priority settings
+   - Testing UI integration with different themes
+   - Verifying game hiding/revealing functionality
+
+## Contributing
+
+### Workflow
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Make your changes
+4. Test thoroughly
+5. Commit with meaningful messages (see Commit Guidelines below)
+6. Push to your fork
+7. Create a Pull Request
+
+### Commit Guidelines
+
+This project uses [Commitizen](https://github.com/commitizen/cz-cli) for consistent commit messages:
+
+- `feat:` New feature
+- `fix:` Bug fix
+- `docs:` Documentation changes
+- `refactor:` Code refactoring
+- `perf:` Performance improvements
+- `test:` Adding tests
+- `chore:` Maintenance tasks
+
+Version bumps are managed automatically using `commitizen`.
+
+### Code Style
+
+- Follow existing code patterns in the project
+- Use meaningful variable and method names
+- Add comments for complex logic
+- Keep methods focused and concise
+- Use async/await for I/O operations
+
+## Versioning
+
+Version information is stored in:
+- `source/extension.yaml` (Version field)
+- `pyproject.toml` (for commitizen)
+
+To bump the version:
+```bash
+cz bump
+```
+
+This will:
+1. Update version in `extension.yaml`
+2. Create a git tag
+3. Update `CHANGELOG.md`
+
+## Theme Integration
+
+For theme developers, see the [Theme Integration](README.md#theme-integration) section in the main README.
+
+Example files are available in the `UiIntegrationExamples/` directory:
+- SourceSelector examples
+- ContentControl examples
+- Full theme integration examples
+
+## Additional Resources
+
+- [Playnite Extension Development](https://github.com/JosefNemec/Playnite/wiki/Extensions)
+- [Playnite SDK Documentation](https://github.com/JosefNemec/Playnite/wiki)
+- [Project Forum Thread](https://playnite.link/forum/thread-308.html)
+- [GitHub Repository](https://github.com/felixkmh/DuplicateHider)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- Report issues on [GitHub Issues](https://github.com/felixkmh/DuplicateHider/issues)
+- Discuss on [Playnite Forum](https://playnite.link/forum/thread-308.html)
+- Contribute translations on [Crowdin](https://crowdin.com/project/duplicatehider)
