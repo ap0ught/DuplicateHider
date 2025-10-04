@@ -12,6 +12,7 @@ Welcome to the DuplicateHider documentation. This directory contains detailed in
 
 ### For Developers
 
+- [Quick Start Guide](QUICK_START.md) - Get up and running in 5 minutes
 - [Development Guide](DEVELOPMENT.md) - Comprehensive development documentation
 - [Contributing Guidelines](../CONTRIBUTING.md) - How to contribute to the project
 

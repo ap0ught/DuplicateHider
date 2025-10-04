@@ -13,7 +13,7 @@ An extension for [Playnite](https://github.com/JosefNemec/Playnite/ "Playnite - 
 
 This extension follows the [Playnite Extension Development Guidelines](https://api.playnite.link/docs/tutorials/extensions/intro.html).
 
-📖 **[Full Development Documentation](docs/DEVELOPMENT.md)**
+📖 **[Full Development Documentation](docs/DEVELOPMENT.md)** | 🚀 **[Quick Start Guide](docs/QUICK_START.md)**
 
 ### Quick Start
 
