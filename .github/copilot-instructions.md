@@ -124,7 +124,7 @@ Lower scores indicate higher priority. Installed games always get higher priorit
 
 - [Playnite SDK Documentation](https://api.playnite.link/)
 - [Playnite Forum Thread](https://playnite.link/forum/thread-308.html)
-- [GitHub Repository](https://github.com/felixkmh/DuplicateHider)
+- [GitHub Repository](https://github.com/ap0ught/DuplicateHider)
 - [Crowdin Translations](https://crowdin.com/project/duplicatehider)
 
 ## Notes for AI Assistants
