@@ -13,7 +13,9 @@ An extension for [Playnite](https://github.com/JosefNemec/Playnite/ "Playnite - 
 
 This extension follows the [Playnite Extension Development Guidelines](https://api.playnite.link/docs/tutorials/extensions/intro.html).
 
-### Building
+📖 **[Full Development Documentation](docs/DEVELOPMENT.md)**
+
+### Quick Start
 
 1. Clone the repository
 2. Open `source/DuplicateHider.sln` in Visual Studio
@@ -33,7 +35,9 @@ The project uses GitHub Actions for automated building and releasing:
 
 ### Contributing
 
-Contributions are welcome! Please see the [Playnite Extension Documentation](https://api.playnite.link/docs/tutorials/extensions/intro.html) for guidelines on extension development.
+Contributions are welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+For detailed development information, see the [Development Guide](docs/DEVELOPMENT.md).
 
 For localization contributions, visit the [Crowdin project](https://crowdin.com/project/duplicatehider).
 
