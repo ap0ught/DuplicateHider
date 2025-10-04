@@ -1,0 +1,29 @@
+name: Build Extension
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET Framework
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Restore NuGet packages
+      run: nuget restore source/DuplicateHider.sln
+      
+    - name: Build solution
+      run: msbuild source/DuplicateHider.sln /p:Configuration=Release /p:PostBuildEvent=""
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: DuplicateHider-build
+        path: source/bin/Release/
