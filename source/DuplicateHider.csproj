@@ -30,18 +30,30 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <!-- Check if optional SDK dependencies exist -->
+  <PropertyGroup>
+    <QuickSearchSDKPath>..\..\QuickSearch\source\bin\Release\QuickSearchSDK.dll</QuickSearchSDKPath>
+    <QuickSearchAttributesPath>..\..\QuickSearch\source\bin\Release\QuickSearchSDK.Attributes.dll</QuickSearchAttributesPath>
+    <StartPageSDKPath>..\..\StartPage-for-Playnite\source\StartPage.SDK\bin\Release\StartPage.SDK.dll</StartPageSDKPath>
+    <HasQuickSearchSDK Condition="Exists('$(QuickSearchSDKPath)') And Exists('$(QuickSearchAttributesPath)')">true</HasQuickSearchSDK>
+    <HasStartPageSDK Condition="Exists('$(StartPageSDKPath)')">true</HasStartPageSDK>
+  </PropertyGroup>
+  <!-- Define conditional compilation symbols based on available SDKs -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' And '$(HasQuickSearchSDK)' == 'true' ">
+    <DefineConstants>$(DefineConstants);QUICKSEARCH</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' And '$(HasStartPageSDK)' == 'true' ">
+    <DefineConstants>$(DefineConstants);STARTPAGE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' And '$(HasQuickSearchSDK)' == 'true' ">
+    <DefineConstants>$(DefineConstants);QUICKSEARCH</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' And '$(HasStartPageSDK)' == 'true' ">
+    <DefineConstants>$(DefineConstants);STARTPAGE</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="QuickSearchSDK">
-      <HintPath>..\..\QuickSearch\source\bin\Release\QuickSearchSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickSearchSDK.Attributes">
-      <HintPath>..\..\QuickSearch\source\bin\Release\QuickSearchSDK.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="StartPage.SDK">
-      <HintPath>..\..\StartPage-for-Playnite\source\StartPage.SDK\bin\Release\StartPage.SDK.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -54,6 +66,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <!-- Optional SDK References (only included if available) -->
+  <ItemGroup Condition=" '$(HasQuickSearchSDK)' == 'true' ">
+    <Reference Include="QuickSearchSDK">
+      <HintPath>$(QuickSearchSDKPath)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="QuickSearchSDK.Attributes">
+      <HintPath>$(QuickSearchAttributesPath)</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(HasStartPageSDK)' == 'true' ">
+    <Reference Include="StartPage.SDK">
+      <HintPath>$(StartPageSDKPath)</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache.cs" />
