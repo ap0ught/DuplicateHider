@@ -9,6 +9,35 @@ An extension for [Playnite](https://github.com/JosefNemec/Playnite/ "Playnite - 
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C1C6CH5IN)
 
+## Comparison with DuplicateFinder
+
+Both [DuplicateHider](https://github.com/felixkmh/DuplicateHider) and [DuplicateFinder](https://github.com/ap0ught/Playnite-DuplicateFinder) are Playnite extensions designed to help manage duplicate games in your library, but they take different approaches:
+
+### DuplicateHider (this plugin)
+- **Automated approach**: Automatically hides duplicate games based on configurable priority rules
+- **Source priority system**: Ranks game sources (Steam, GOG, Epic, etc.) so you always see your preferred version
+- **Advanced scoring**: Considers multiple factors including source priority, installation status, and custom priority properties
+- **Automatic updates**: Can continuously maintain hidden/visible state as your library changes
+- **UI integration**: Provides custom UI elements for themes to display game sources with clickable icons
+- **Extensive filtering**: Includes platforms, sources, categories, and custom groups
+- **Name normalization**: Advanced text filtering to match games despite naming variations (Roman numerals, GOTY editions, special characters, etc.)
+- **More features**: Custom groups, priority override tags, user/theme icons, game menu integration
+
+### DuplicateFinder
+- **Manual approach**: Shows you duplicates and lets you decide what to do with each one
+- **Simplicity focused**: Fewer features, less automation, easier to understand
+- **Sidebar view**: Displays results in a dedicated sidebar panel for review
+- **Similarity checking**: Can find potentially duplicate games using Levenshtein distance algorithm
+- **Information focused**: Provides information so users can review and decide on a per-game basis
+- **Easier maintenance**: Designed to be simpler to maintain and keep compatible with Playnite updates
+
+### Which should you use?
+
+- **Choose DuplicateHider** if you want automated duplicate management, extensive customization, and don't want to manually review duplicates every time
+- **Choose DuplicateFinder** if you prefer to manually review and decide what to do with each duplicate game, or want a simpler, lighter-weight solution
+
+Both plugins can coexist if needed, as they serve complementary purposes.
+
 ## Extension Settings
 
 ![Extension Settings](https://user-images.githubusercontent.com/24227002/132069628-437aedbd-17c0-4277-8cca-1c36af65cf59.png "Plugin Settings")
