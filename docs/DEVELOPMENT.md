@@ -55,7 +55,7 @@ The extension implements the following Playnite SDK interfaces:
 
 ```bash
 # Clone the repository
-git clone https://github.com/felixkmh/DuplicateHider.git
+git clone https://github.com/ap0ught/DuplicateHider.git
 cd DuplicateHider
 
 # Open in Visual Studio
