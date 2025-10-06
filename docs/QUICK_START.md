@@ -13,7 +13,7 @@ Get up and running with DuplicateHider development in minutes!
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/felixkmh/DuplicateHider.git
+git clone https://github.com/ap0ught/DuplicateHider.git
 cd DuplicateHider
 ```
 
