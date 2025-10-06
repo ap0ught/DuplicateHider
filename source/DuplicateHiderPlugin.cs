@@ -5,7 +5,9 @@ using Playnite.SDK;
 using Playnite.SDK.Events;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
+#if QUICKSEARCH
 using QuickSearch.SearchItems;
+#endif
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -29,14 +31,19 @@ using System.Windows.Input;
 using DuplicateHider.Models;
 using DuplicateHider.ViewModels;
 using DuplicateHider.Views;
+#if STARTPAGE
 using StartPage.SDK;
+#endif
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DuplicateHider")]
 namespace DuplicateHider
 {
-    public class DuplicateHiderPlugin : GenericPlugin, StartPage.SDK.IStartPageExtension
+    public class DuplicateHiderPlugin : GenericPlugin
+#if STARTPAGE
+        , StartPage.SDK.IStartPageExtension
+#endif
     {
         private GongSolutions.Wpf.DragDrop.DefaultDragHandler dropInfo = new GongSolutions.Wpf.DragDrop.DefaultDragHandler();
 
@@ -394,6 +401,7 @@ namespace DuplicateHider
 
             UpdateGuidToCopiesDict();
 
+#if QUICKSEARCH
             // QuickSearch support
             try
             {
@@ -434,6 +442,7 @@ namespace DuplicateHider
             {
 
             }
+#endif
         }
 
         private void LocalizeTags()
@@ -456,6 +465,7 @@ namespace DuplicateHider
             }
         }
 
+#if QUICKSEARCH
         private class DuplicateHiderItem : ISearchItem<string>
         {
             public IList<QuickSearch.SearchItems.ISearchKey<string>> Keys => new List<QuickSearch.SearchItems.ISearchKey<string>>
@@ -484,6 +494,7 @@ namespace DuplicateHider
 
             public FrameworkElement DetailsView => null;
         }
+#endif
 
         private void IconWatcher_Changed(object sender, FileSystemEventArgs e)
         {
@@ -1824,6 +1835,7 @@ namespace DuplicateHider
             return GameFilters;
         }
 
+#if STARTPAGE
         const string LibraryStatisticsId = "LibraryStatistics";
 
         public StartPageExtensionArgs GetAvailableStartPageViews()
@@ -1852,5 +1864,6 @@ namespace DuplicateHider
         {
             
         }
+#endif
     }
 }
