@@ -25,9 +25,13 @@ namespace DuplicateHider
 
         [JsonIgnore]
         private DuplicateHiderSettings previousSettings = null;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_AutomaticUpdate", Description = "LOC_DH_AutomaticUpdateTooltip")]
+#endif
         public bool UpdateAutomatically { get; set; } = false;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_ShowOtherCopies", Description = "LOC_DH_ShowOtherCopiesTooltip")]
+#endif
         public bool ShowOtherCopiesInGameMenu { get; set; } = false;
         public string DisplayString { get; set; } = "{Name} [{Installed} on {'Source'}{, ROM: 'ImageNameNoExt}]";
 
@@ -54,20 +58,34 @@ namespace DuplicateHider
         public UniqueList<string> ExcludeSources { get; set; } = new UniqueList<string>();
         public UniqueList<string> ExcludeCategories { get; set; } = new UniqueList<string>();
         public HashSet<Guid> IgnoredGames { get; set; } = new HashSet<Guid>();
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_IgnoreManuallyHiddenGames", Description = "LOC_DH_IgnoreManuallyHiddenGamesTooltip")]
+#endif
         public bool AddHiddenToIgnoreList { get; set; } = false;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_PreferUserIcons", Description = "LOC_DH_PreferUserIconsTooltip")]
+#endif
         public bool PreferUserIcons { get; set; } = true;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_EnableThemeIcons", Description = "LOC_DH_EnableThemeIconsTooltip")]
+#endif
         public bool EnableThemeIcons { get; set; } = true;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_EnableUIIntegration", Description = "LOC_DH_EnableUIIntegrationTooltip")]
+#endif
         public bool EnableUiIntegration { get; set; } = true;
         private bool showSingleIcon = true;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_ShowSingleIcon", Description = "LOC_DH_ShowSingleIconTooltip")]
+#endif
         public bool ShowSingleIcon { get => showSingleIcon; set => SetValue(ref showSingleIcon, value); }
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_SuppressNotification", Description = "LOC_DH_SuppressNotificationTooltip")]
+#endif
         public bool SupressThemeIconNotification { get; set; } = false;
+#if QUICKSEARCH
         [QuickSearch.Attributes.GenericOption("LOC_DH_PrioritizeNewerGames")]
+#endif
         public bool PreferNewerGame { get; set; } = true;
 
         public List<ReplaceFilter> ReplaceFilters { get; set; } = new List<ReplaceFilter>();
