@@ -156,7 +156,7 @@ Type: GenericPlugin
 Icon: icon.png
 Links:
   - Name: GitHub
-    Url: https://github.com/felixkmh/DuplicateHider
+    Url: https://github.com/ap0ught/DuplicateHider
 ```
 
 Key fields:
@@ -215,15 +215,30 @@ The project uses GitHub Actions for CI/CD:
 
 ## Releasing
 
-1. Update version in `extension.yaml`
-2. Update `CHANGELOG.md`
-3. Commit changes
-4. Create and push a version tag:
+To create a new release of DuplicateHider:
+
+1. **Update version number** in `source/extension.yaml`
+2. **Update CHANGELOG.md**:
+   - Change "Unreleased" section to the new version with date
+   - Add appropriate categorization (Feat, Fix, Documentation, etc.)
+3. **Commit changes**:
+   ```bash
+   git add source/extension.yaml CHANGELOG.md
+   git commit -m "Bump version to v3.x.x"
+   git push
+   ```
+4. **Create and push a version tag**:
    ```bash
    git tag -a v3.x.x -m "Release v3.x.x"
    git push origin v3.x.x
    ```
-5. GitHub Actions will automatically create the release
+5. **GitHub Actions will automatically**:
+   - Build the extension
+   - Package it as `felixkmh_DuplicateHider_Plugin_3_x_x.pext`
+   - Create a GitHub release with the package attached
+   - The release will be available at `https://github.com/ap0ught/DuplicateHider/releases`
+
+**Note**: The plugin ID remains `felixkmh_DuplicateHider_Plugin` for backward compatibility, even though the repository is now under the ap0ught organization.
 
 ## Resources
 
@@ -234,6 +249,6 @@ The project uses GitHub Actions for CI/CD:
 
 ## Getting Help
 
-- Open an issue on [GitHub](https://github.com/felixkmh/DuplicateHider/issues)
+- Open an issue on [GitHub](https://github.com/ap0ught/DuplicateHider/issues)
 - Ask in the [Playnite Forum](https://playnite.link/forum/thread-308.html)
 - Check the [Playnite SDK Documentation](https://api.playnite.link/)

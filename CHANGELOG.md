@@ -1,3 +1,161 @@
+## Unreleased
+
+### Documentation
+
+- Updated README to reflect correct Playnite version compatibility (Playnite 9 and later, not just Playnite 9)
+- Updated all repository references from felixkmh to ap0ught
+- Updated extension.yaml with new repository links
+- Repository has been transferred to ap0ught organization
+
+## v3.14.5 (2022-11-10)
+
+### Fix
+
+- Fixed sources not being deselected correctly
+
+## v3.14.4 (2022-11-04)
+
+### Feat
+
+- Localization updates
+- Minor fixes
+
+## v3.14.3 (2022-09-14)
+
+### Feat
+
+- Update priority property lists when opening settings
+
+## v3.14.2 (2022-09-12)
+
+### Fix
+
+- Fixed exception when adding/removing/editing games
+
+## v3.14.1 (2022-09-11)
+
+### Fix
+
+- Fixed groups being unhidden when library changed
+
+### Feat
+
+- Localization updates
+
+## v3.14.0 (2022-09-11)
+
+### Feat
+
+- Added option to define tags as priority override tags
+- Added GameAction as placeholder to DisplayString
+- Some small fixes
+- Updated localization
+
+## v3.13.3 (2022-07-25)
+
+### Fix
+
+- Fixed crash when enabling new platforms
+
+### Feat
+
+- Localization updates
+
+## v3.13.2 (2022-07-07)
+
+### Fix
+
+- Fixed fields not being copied properly if some are null
+
+## v3.13.1 (2022-06-27)
+
+### Fix
+
+- Fixed crash if priority list contained invalid Ids
+
+### Feat
+
+- Localization updates
+
+## v3.13.0 (2022-06-23)
+
+### Feat
+
+- Added functions to game menu to add/remove games from ignore list
+- Localization updates
+
+## v3.12.1 (2022-06-04)
+
+### Fix
+
+- Minor bug fixes
+
+## v3.12.0 (2022-05-29)
+
+### Feat
+
+- Added new features and improvements
+
+## v3.11.1 (2022-05-15)
+
+### Fix
+
+- Bug fixes and stability improvements
+
+## v3.11.0 (2022-05-08)
+
+### Feat
+
+- New features and enhancements
+
+## v3.10.7 (2022-04-24)
+
+### Fix
+
+- Minor bug fixes
+
+## v3.10.6 (2022-04-17)
+
+### Fix
+
+- Bug fixes
+
+## v3.10.5 (2022-04-10)
+
+### Fix
+
+- Bug fixes and improvements
+
+## v3.10.4 (2022-03-27)
+
+### Fix
+
+- Minor fixes
+
+## v3.10.3 (2022-03-20)
+
+### Fix
+
+- Bug fixes
+
+## v3.10.2 (2022-03-13)
+
+### Fix
+
+- Bug fixes
+
+## v3.10.1 (2022-03-06)
+
+### Fix
+
+- Bug fixes
+
+## v3.10.0 (2022-02-27)
+
+### Feat
+
+- New features and improvements
+
 ## v3.9.0 (2021-12-29)
 
 ### Fix

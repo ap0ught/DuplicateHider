@@ -151,7 +151,7 @@ Install the extension in Playnite and verify:
 ## Getting Help
 
 - **Documentation**: [docs/](.)
-- **Issues**: [GitHub Issues](https://github.com/felixkmh/DuplicateHider/issues)
+- **Issues**: [GitHub Issues](https://github.com/ap0ught/DuplicateHider/issues)
 - **Forum**: [Playnite Forum Thread](https://playnite.link/forum/thread-308.html)
 - **Playnite Docs**: [Extension Development](https://api.playnite.link/docs/tutorials/extensions/intro.html)
 
