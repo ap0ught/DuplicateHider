@@ -1,5 +1,7 @@
 # DuplicateHider
 
+> **Note**: This repository is now maintained under the ap0ught organization. Historical releases (up to v3.14.5) are available in the [original repository](https://github.com/felixkmh/DuplicateHider). Future releases will be published here.
+
 ## Important: Version 3.x.x is compatible with Playnite 9 and later. The latest version compatible with Playnite 8 is [v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) (from the original repository).
 
 ### Understanding Version Compatibility
