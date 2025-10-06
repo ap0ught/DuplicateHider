@@ -6,17 +6,34 @@ Thank you for your interest in contributing to DuplicateHider! This document pro
 
 ### Prerequisites
 
-- Visual Studio 2019 or later (or MSBuild/MonoDevelop)
-- .NET Framework 4.6.2 Developer Pack
-- Playnite installed (for testing)
+⚠️ **Windows Required**: This project targets .NET Framework 4.6.2, which is Windows-only. Development on Linux or macOS is not supported.
+
+- **Windows** operating system
+- **Visual Studio 2019 or later** (Community Edition is fine) OR **MSBuild**
+- **.NET Framework 4.6.2 Developer Pack** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net462))
+- **Playnite** installed (for testing)
 
 ### Getting Started
 
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/DuplicateHider.git`
 3. Open `source/DuplicateHider.sln` in Visual Studio
-4. Restore NuGet packages
-5. Build the solution
+4. Restore NuGet packages (Visual Studio will do this automatically)
+5. Build the solution (F6 or Build → Build Solution)
+
+**Alternative: Command Line Build**
+
+```powershell
+# Run the build script
+.\build.ps1
+```
+
+Or manually:
+
+```cmd
+nuget restore source/DuplicateHider.sln
+msbuild source/DuplicateHider.sln /p:Configuration=Release
+```
 
 ### Extension Development Guidelines
 

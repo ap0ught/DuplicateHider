@@ -4,6 +4,9 @@ Get up and running with DuplicateHider development in minutes!
 
 ## Prerequisites
 
+⚠️ **Windows Required**: This project targets .NET Framework 4.6.2, which is Windows-only. Development on Linux or macOS is not supported.
+
+- **Windows** operating system (Linux/macOS not supported)
 - [Visual Studio 2019 or later](https://visualstudio.microsoft.com/) (Community Edition is fine)
 - [.NET Framework 4.6.2 Developer Pack](https://dotnet.microsoft.com/download/dotnet-framework/net462)
 - [Playnite](https://playnite.link/) installed for testing
@@ -40,6 +43,19 @@ nuget restore DuplicateHider.sln
 ### 4. Build
 
 Press **F6** or go to **Build → Build Solution**
+
+**Alternative: Command Line**
+
+From the repository root:
+```powershell
+.\build.ps1
+```
+
+Or:
+```cmd
+cd source
+msbuild DuplicateHider.sln /p:Configuration=Release
+```
 
 ### 5. Test
 
@@ -106,7 +122,11 @@ Install the extension in Playnite and verify:
 ### Build Errors
 
 **"The reference assemblies for .NETFramework,Version=v4.6.2 were not found"**
-- Install [.NET Framework 4.6.2 Developer Pack](https://dotnet.microsoft.com/download/dotnet-framework/net462)
+- This error occurs when:
+  1. Building on Linux/macOS (not supported - requires Windows)
+  2. Missing .NET Framework 4.6.2 Developer Pack on Windows
+- Solution: Install [.NET Framework 4.6.2 Developer Pack](https://dotnet.microsoft.com/download/dotnet-framework/net462) on Windows
+- **Do NOT use `dotnet build`** - use MSBuild or Visual Studio instead
 
 **"Package restore failed"**
 - Check internet connection
