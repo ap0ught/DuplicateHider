@@ -2,23 +2,27 @@
 
 > **Note**: This repository is now maintained under the ap0ught organization. Historical releases (up to v3.14.5) are available in the [original repository](https://github.com/felixkmh/DuplicateHider). Future releases will be published here.
 
-## Important: Version 3.x.x is compatible with Playnite 9 and later. The latest version compatible with Playnite 8 is [v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) (from the original repository).
+## Important: Version 4.x.x is compatible with Playnite 9, 10, 11, and later. Version 3.x.x is compatible with Playnite 9 and 10. The latest version compatible with Playnite 8 is [v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) (from the original repository).
 
 ### Understanding Version Compatibility
 
 **Why the version split?**
 
-Version 3.0.0 of DuplicateHider represents a major rewrite that takes advantage of new APIs and features introduced in Playnite 9. The compatibility break with Playnite 8 is due to several key factors:
+Version 4.0.0+ of DuplicateHider uses the latest PlayniteSDK (6.13.0) to ensure compatibility with Playnite 11 and later versions. Version 3.0.0 represents a major rewrite that takes advantage of new APIs and features introduced in Playnite 9. The compatibility break with Playnite 8 is due to several key factors:
 
-1. **PlayniteSDK Version**: Version 3.x uses PlayniteSDK 6.x, which is designed for Playnite 9 and later versions. Playnite 8 uses an older SDK version (5.x) with different APIs.
+1. **PlayniteSDK Version**: 
+   - Version 4.x uses PlayniteSDK 6.13.0, providing compatibility with Playnite 9, 10, 11, and later
+   - Version 3.x uses PlayniteSDK 6.2.0, designed for Playnite 9 and 10
+   - Playnite 8 uses an older SDK version (5.x) with different APIs
 
-2. **UI Integration APIs**: The custom UI element system (`GetGameViewControl` method) that allows themes to embed SourceSelector and ContentControl components was introduced in Playnite 9. This is a core feature of version 3.x and is not available in Playnite 8.
+2. **UI Integration APIs**: The custom UI element system (`GetGameViewControl` method) that allows themes to embed SourceSelector and ContentControl components was introduced in Playnite 9. This is a core feature of version 3.x+ and is not available in Playnite 8.
 
-3. **API Changes**: Various API improvements and changes in Playnite 9 are utilized by version 3.x, including enhanced game view controls, improved event handling, and better extension integration points.
+3. **API Changes**: Various API improvements and changes in Playnite 9+ are utilized by version 3.x and 4.x, including enhanced game view controls, improved event handling, and better extension integration points.
 
 **Which version should you use?**
 
-- **Playnite 9, 10, or later**: Use the latest DuplicateHider v3.x.x from this repository for full features including theme integration
+- **Playnite 11 or later**: Use the latest DuplicateHider v4.x.x from this repository for full compatibility
+- **Playnite 9 or 10**: Use DuplicateHider v3.x.x or v4.x.x (both compatible)
 - **Playnite 8**: Use [DuplicateHider v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) from the original repository (core functionality without UI integration)
 
 ### For Developers: Version Compatibility TODO
