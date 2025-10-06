@@ -98,17 +98,43 @@ This extension follows the [Playnite Extension Development Guidelines](https://a
 
 📖 **[Full Development Documentation](docs/DEVELOPMENT.md)** | 🚀 **[Quick Start Guide](docs/QUICK_START.md)**
 
+### Build Requirements
+
+⚠️ **Windows Required**: This project targets .NET Framework 4.6.2, which is Windows-only. Building on Linux or macOS is not supported.
+
+The extension requires:
+- **Windows** operating system
+- **.NET Framework 4.6.2 Developer Pack** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net462))
+- **PlayniteSDK 6.2.0** (NuGet package)
+- **Visual Studio 2019 or later** (or MSBuild)
+
 ### Quick Start
+
+**Using the build scripts (recommended):**
+
+```powershell
+# PowerShell (Windows)
+.\build.ps1
+```
+
+```bash
+# Bash (Windows with Git Bash or WSL)
+./build.sh
+```
+
+**Manual build:**
 
 1. Clone the repository
 2. Open `source/DuplicateHider.sln` in Visual Studio
 3. Restore NuGet packages
 4. Build the solution (Release configuration)
 
-The extension requires:
-- .NET Framework 4.6.2
-- PlayniteSDK 6.2.0
-- Visual Studio 2019 or later (or MSBuild)
+**Using MSBuild directly:**
+
+```cmd
+nuget restore source/DuplicateHider.sln
+msbuild source/DuplicateHider.sln /p:Configuration=Release
+```
 
 ### Continuous Integration
 

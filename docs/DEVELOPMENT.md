@@ -53,6 +53,13 @@ The extension implements the following Playnite SDK interfaces:
 
 ### 1. Setting Up Development Environment
 
+⚠️ **Windows Required**: This project targets .NET Framework 4.6.2, which is Windows-only. Building on Linux or macOS is not supported. Do not attempt to build with `dotnet build` on non-Windows systems.
+
+**Prerequisites:**
+- Windows operating system
+- .NET Framework 4.6.2 Developer Pack ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net462))
+- Visual Studio 2019 or later (or MSBuild)
+
 ```bash
 # Clone the repository
 git clone https://github.com/ap0ught/DuplicateHider.git
@@ -64,13 +71,32 @@ start source/DuplicateHider.sln
 
 ### 2. Building
 
+**Using the build script (recommended):**
+
+```powershell
+# PowerShell
+.\build.ps1
+```
+
+```bash
+# Bash (Git Bash on Windows)
+./build.sh
+```
+
+**Manual build:**
+
 ```bash
 # Restore NuGet packages
 nuget restore source/DuplicateHider.sln
 
-# Build
+# Build with MSBuild
 msbuild source/DuplicateHider.sln /p:Configuration=Release
 ```
+
+**Important Notes:**
+- Do NOT use `dotnet build` - this project requires MSBuild and .NET Framework
+- The project uses the old-style .csproj format (not SDK-style)
+- GitHub Actions automatically builds on `windows-latest` runners
 
 ### 3. Testing
 
