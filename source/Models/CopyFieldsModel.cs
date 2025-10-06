@@ -359,7 +359,7 @@ namespace DuplicateHider.Models
                             {
                                 var sourceFileName = Path.GetFileName(sourceMicroTrailer);
                                 var targetMicroTrailer = Path.Combine(targetEmt, sourceFileName);
-                                File.Copy(sourceTrailer, targetMicroTrailer, true);
+                                File.Copy(sourceMicroTrailer, targetMicroTrailer, true);
                             }
                             catch (Exception)
                             { }
