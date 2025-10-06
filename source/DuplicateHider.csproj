@@ -39,16 +39,10 @@
     <HasStartPageSDK Condition="Exists('$(StartPageSDKPath)')">true</HasStartPageSDK>
   </PropertyGroup>
   <!-- Define conditional compilation symbols based on available SDKs -->
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' And '$(HasQuickSearchSDK)' == 'true' ">
+  <PropertyGroup Condition=" '$(HasQuickSearchSDK)' == 'true' ">
     <DefineConstants>$(DefineConstants);QUICKSEARCH</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' And '$(HasStartPageSDK)' == 'true' ">
-    <DefineConstants>$(DefineConstants);STARTPAGE</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' And '$(HasQuickSearchSDK)' == 'true' ">
-    <DefineConstants>$(DefineConstants);QUICKSEARCH</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' And '$(HasStartPageSDK)' == 'true' ">
+  <PropertyGroup Condition=" '$(HasStartPageSDK)' == 'true' ">
     <DefineConstants>$(DefineConstants);STARTPAGE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
