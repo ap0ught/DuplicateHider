@@ -2,6 +2,89 @@
 
 ## Important: Version 3.x.x is only compatible with Playnite 9. The latest Version compatible with Playnite 8 is [v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4).
 
+### Understanding Version Compatibility
+
+**Why the version split?**
+
+Version 3.0.0 of DuplicateHider represents a major rewrite that takes advantage of new APIs and features introduced in Playnite 9. The compatibility break is due to several key factors:
+
+1. **PlayniteSDK Version**: Version 3.x uses PlayniteSDK 6.x, which is designed for Playnite 9. Playnite 8 uses an older SDK version (5.x) with different APIs.
+
+2. **UI Integration APIs**: The custom UI element system (`GetGameViewControl` method) that allows themes to embed SourceSelector and ContentControl components was introduced in Playnite 9. This is a core feature of version 3.x and is not available in Playnite 8.
+
+3. **API Changes**: Various API improvements and changes in Playnite 9 are utilized by version 3.x, including enhanced game view controls, improved event handling, and better extension integration points.
+
+**Which version should you use?**
+
+- **Playnite 9 or later**: Use the latest DuplicateHider v3.x.x for full features including theme integration
+- **Playnite 8**: Use [DuplicateHider v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) (core functionality without UI integration)
+
+### For Developers: Version Compatibility TODO
+
+If you need to adapt DuplicateHider for different Playnite versions, here's what you need to know:
+
+#### Porting v3.x features back to Playnite 8 (Downgrade)
+
+**Requirements:**
+- Target PlayniteSDK 5.x
+- Remove or conditionally compile Playnite 9-specific features
+
+**Steps:**
+
+1. **Update SDK Reference** in `source/DuplicateHider.csproj`:
+   ```xml
+   <PackageReference Include="PlayniteSDK">
+     <Version>5.6.0</Version>  <!-- or appropriate 5.x version -->
+   </PackageReference>
+   ```
+
+2. **Remove UI Integration**: The `GetGameViewControl` method and related UI integration features must be removed or disabled:
+   - Remove/disable `GetGameViewControl` override in `DuplicateHiderPlugin.cs`
+   - Remove references to SourceSelector and ContentControl components in theme integration
+   - Remove/disable UI Integration settings from `DuplicateHiderSettings.cs`
+
+3. **API Compatibility Checks**: Review and update code for SDK differences:
+   - Check event handler signatures (ItemUpdated, ItemCollectionChanged, etc.)
+   - Verify database access methods match SDK 5.x patterns
+   - Update any extension initialization code to match SDK 5.x conventions
+
+4. **Test Core Functionality**: Verify that core features still work:
+   - Game indexing and duplicate detection
+   - Priority-based hiding
+   - Game filtering (platforms, sources, categories)
+   - Settings management
+   - Game menu integration
+
+5. **Update Documentation**: Document which features are unavailable (primarily UI integration)
+
+#### Updating to newer Playnite versions (Upgrade)
+
+**For Playnite 10 or later:**
+
+1. **Check SDK Compatibility**: Review [Playnite SDK changelog](https://github.com/JosefNemec/Playnite/wiki/Tutorials) for breaking changes
+
+2. **Update SDK Reference**: Update PlayniteSDK package version in `.csproj` file
+
+3. **Test API Compatibility**: 
+   - Test all plugin features thoroughly
+   - Check for deprecated APIs and update accordingly
+   - Verify UI integration components still work
+
+4. **Review Extension Manifest**: Update `source/extension.yaml` if needed (minimum Playnite version, etc.)
+
+5. **Update Version Number**: Follow semantic versioning (bump major version for breaking changes)
+
+#### Key Files Involved in Version Compatibility
+
+- `source/DuplicateHider.csproj` - SDK version reference
+- `source/DuplicateHiderPlugin.cs` - Main plugin implementation, contains Playnite 9-specific code
+- `source/UiIntegration.cs` - UI integration features (Playnite 9+ only)
+- `source/Controls/SourceSelector.xaml.cs` - Custom UI control (Playnite 9+ only)
+- `source/Controls/DHContentControl.xaml.cs` - Custom UI control (Playnite 9+ only)
+- `source/extension.yaml` - Plugin manifest and version
+
+**Note for contributors**: If you plan to maintain compatibility across multiple Playnite versions, consider using conditional compilation (`#if` directives) to separate version-specific code, or maintain separate branches for each major Playnite version.
+
 [Playnite Forum Post](https://playnite.link/forum/thread-308.html)  
 An extension for [Playnite](https://github.com/JosefNemec/Playnite/ "Playnite - video game library manager") by JosefNemec that hides additional copies of games.
 
