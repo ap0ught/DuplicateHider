@@ -66,7 +66,7 @@ For translations, please visit our [Crowdin project](https://crowdin.com/project
 ## Questions?
 
 If you have questions, feel free to:
-- Open an issue on GitHub
+- [Open an issue on GitHub](https://github.com/Playnite/DuplicateHider/issues)
 - Ask in the [Playnite Forum thread](https://playnite.link/forum/thread-308.html)
 
 Thank you for contributing!
