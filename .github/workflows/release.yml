@@ -34,7 +34,9 @@ jobs:
       run: |
         $version = "${{ steps.get_version.outputs.VERSION_UNDERSCORES }}"
         $pextName = "felixkmh_DuplicateHider_Plugin_$version.pext"
-        Compress-Archive -Path source/bin/Release/* -DestinationPath $pextName -Force
+        $zipName = "felixkmh_DuplicateHider_Plugin_$version.zip"
+        Compress-Archive -Path source/bin/Release/* -DestinationPath $zipName -Force
+        Rename-Item -Path $zipName -NewName $pextName
         Write-Host "Created $pextName"
         if (Test-Path $pextName) {
           Write-Host "Package verified at: $(Resolve-Path $pextName)"
