@@ -11,7 +11,7 @@ An extension for [Playnite](https://github.com/JosefNemec/Playnite/ "Playnite - 
 
 ## Comparison with DuplicateFinder
 
-Both [DuplicateHider](https://github.com/felixkmh/DuplicateHider) and [DuplicateFinder](https://github.com/ap0ught/Playnite-DuplicateFinder) are Playnite extensions designed to help manage duplicate games in your library, but they take different approaches:
+Both [DuplicateHider](https://github.com/ap0ught/DuplicateHider) and [DuplicateFinder](https://github.com/ap0ught/Playnite-DuplicateFinder) are Playnite extensions designed to help manage duplicate games in your library, but they take different approaches:
 
 ### DuplicateHider (this plugin)
 - **Automated approach**: Automatically hides duplicate games based on configurable priority rules
