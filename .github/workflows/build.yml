@@ -24,7 +24,7 @@ jobs:
       run: msbuild source/DuplicateHider.sln /p:Configuration=Release /p:PostBuildEvent=""
       
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: DuplicateHider-build
         path: source/bin/Release/

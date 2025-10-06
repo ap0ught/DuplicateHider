@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup .NET Framework
       uses: microsoft/setup-msbuild@v1.1
@@ -26,23 +26,14 @@ jobs:
       run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       shell: bash
       
+    - name: Package extension
+      run: |
+        Compress-Archive -Path source/bin/Release/* -DestinationPath DuplicateHider-${{ steps.get_version.outputs.VERSION }}.zip
+      shell: powershell
+        
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        files: DuplicateHider-${{ steps.get_version.outputs.VERSION }}.zip
         draft: false
         prerelease: false
-        
-    - name: Upload Release Assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: source/bin/
-        asset_name: DuplicateHider-${{ steps.get_version.outputs.VERSION }}.zip
-        asset_content_type: application/zip
