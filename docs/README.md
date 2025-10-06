@@ -31,10 +31,10 @@ This extension follows the official Playnite extension development guidelines:
 
 ## Quick Links
 
-- [GitHub Repository](https://github.com/felixkmh/DuplicateHider)
+- [GitHub Repository](https://github.com/ap0ught/DuplicateHider)
 - [Playnite Forum Thread](https://playnite.link/forum/thread-308.html)
 - [Crowdin Localization Project](https://crowdin.com/project/duplicatehider)
-- [Issue Tracker](https://github.com/felixkmh/DuplicateHider/issues)
+- [Issue Tracker](https://github.com/ap0ught/DuplicateHider/issues)
 
 ## Extension Architecture
 
@@ -52,7 +52,7 @@ For technical details, see the [Development Guide](DEVELOPMENT.md).
 If you need help:
 
 1. Check the [main README](../README.md) for usage instructions
-2. Search existing [GitHub issues](https://github.com/felixkmh/DuplicateHider/issues)
+2. Search existing [GitHub issues](https://github.com/ap0ught/DuplicateHider/issues)
 3. Ask in the [Playnite Forum](https://playnite.link/forum/thread-308.html)
 4. Open a new issue if you've found a bug
 

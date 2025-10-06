@@ -156,7 +156,7 @@ Type: GenericPlugin
 Icon: icon.png
 Links:
   - Name: GitHub
-    Url: https://github.com/felixkmh/DuplicateHider
+    Url: https://github.com/ap0ught/DuplicateHider
 ```
 
 Key fields:
@@ -234,6 +234,6 @@ The project uses GitHub Actions for CI/CD:
 
 ## Getting Help
 
-- Open an issue on [GitHub](https://github.com/felixkmh/DuplicateHider/issues)
+- Open an issue on [GitHub](https://github.com/ap0ught/DuplicateHider/issues)
 - Ask in the [Playnite Forum](https://playnite.link/forum/thread-308.html)
 - Check the [Playnite SDK Documentation](https://api.playnite.link/)

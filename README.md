@@ -1,14 +1,14 @@
 # DuplicateHider
 
-## Important: Version 3.x.x is only compatible with Playnite 9. The latest Version compatible with Playnite 8 is [v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4).
+## Important: Version 3.x.x is compatible with Playnite 9 and later. The latest version compatible with Playnite 8 is [v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) (from the original repository).
 
 ### Understanding Version Compatibility
 
 **Why the version split?**
 
-Version 3.0.0 of DuplicateHider represents a major rewrite that takes advantage of new APIs and features introduced in Playnite 9. The compatibility break is due to several key factors:
+Version 3.0.0 of DuplicateHider represents a major rewrite that takes advantage of new APIs and features introduced in Playnite 9. The compatibility break with Playnite 8 is due to several key factors:
 
-1. **PlayniteSDK Version**: Version 3.x uses PlayniteSDK 6.x, which is designed for Playnite 9. Playnite 8 uses an older SDK version (5.x) with different APIs.
+1. **PlayniteSDK Version**: Version 3.x uses PlayniteSDK 6.x, which is designed for Playnite 9 and later versions. Playnite 8 uses an older SDK version (5.x) with different APIs.
 
 2. **UI Integration APIs**: The custom UI element system (`GetGameViewControl` method) that allows themes to embed SourceSelector and ContentControl components was introduced in Playnite 9. This is a core feature of version 3.x and is not available in Playnite 8.
 
@@ -16,8 +16,8 @@ Version 3.0.0 of DuplicateHider represents a major rewrite that takes advantage 
 
 **Which version should you use?**
 
-- **Playnite 9 or later**: Use the latest DuplicateHider v3.x.x for full features including theme integration
-- **Playnite 8**: Use [DuplicateHider v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) (core functionality without UI integration)
+- **Playnite 9, 10, or later**: Use the latest DuplicateHider v3.x.x from this repository for full features including theme integration
+- **Playnite 8**: Use [DuplicateHider v2.5.4](https://github.com/felixkmh/DuplicateHider/releases/tag/v2.5.4) from the original repository (core functionality without UI integration)
 
 ### For Developers: Version Compatibility TODO
 
@@ -59,11 +59,11 @@ If you need to adapt DuplicateHider for different Playnite versions, here's what
 
 #### Updating to newer Playnite versions (Upgrade)
 
-**For Playnite 10 or later:**
+**For future Playnite versions:**
 
 1. **Check SDK Compatibility**: Review [Playnite SDK changelog](https://github.com/JosefNemec/Playnite/wiki/Tutorials) for breaking changes
 
-2. **Update SDK Reference**: Update PlayniteSDK package version in `.csproj` file
+2. **Update SDK Reference**: Update PlayniteSDK package version in `.csproj` file if required
 
 3. **Test API Compatibility**: 
    - Test all plugin features thoroughly
@@ -77,7 +77,7 @@ If you need to adapt DuplicateHider for different Playnite versions, here's what
 #### Key Files Involved in Version Compatibility
 
 - `source/DuplicateHider.csproj` - SDK version reference
-- `source/DuplicateHiderPlugin.cs` - Main plugin implementation, contains Playnite 9-specific code
+- `source/DuplicateHiderPlugin.cs` - Main plugin implementation, contains Playnite 9+ specific code
 - `source/UiIntegration.cs` - UI integration features (Playnite 9+ only)
 - `source/Controls/SourceSelector.xaml.cs` - Custom UI control (Playnite 9+ only)
 - `source/Controls/DHContentControl.xaml.cs` - Custom UI control (Playnite 9+ only)
@@ -350,7 +350,7 @@ to the resource dictionary, a Theme can also specify the maximum number of icons
 
 ### Showcase Themes
 
-Some Themes ([Night](https://github.com/felixkmh/DH_Themes/tree/main/source/Night)) showing some possibilites of using the custom ui elements provided by DuplicateHider.
+Some Themes ([Night](https://github.com/felixkmh/DH_Themes/tree/main/source/Night)) showing some possibilities of using the custom UI elements provided by DuplicateHider.
 
 Preview:
 |View|Preview|
