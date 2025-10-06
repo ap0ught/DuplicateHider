@@ -23,19 +23,25 @@ jobs:
       
     - name: Get version from tag
       id: get_version
-      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/v}
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        VERSION_UNDERSCORES=$(echo $VERSION | tr '.' '_')
+        echo "VERSION_UNDERSCORES=$VERSION_UNDERSCORES" >> $GITHUB_OUTPUT
       shell: bash
       
     - name: Package extension
       run: |
-        $version = "${{ steps.get_version.outputs.VERSION }}"
-        $zipName = "DuplicateHider-$version.zip"
-        Compress-Archive -Path source/bin/Release/* -DestinationPath $zipName -Force
-        Write-Host "Created $zipName"
-        if (Test-Path $zipName) {
-          Write-Host "Zip file verified at: $(Resolve-Path $zipName)"
+        $version = "${{ steps.get_version.outputs.VERSION_UNDERSCORES }}"
+        $pextName = "felixkmh_DuplicateHider_Plugin_$version.pext"
+        Compress-Archive -Path source/bin/Release/* -DestinationPath $pextName -Force
+        Write-Host "Created $pextName"
+        if (Test-Path $pextName) {
+          Write-Host "Package verified at: $(Resolve-Path $pextName)"
+          $fileSize = (Get-Item $pextName).Length / 1KB
+          Write-Host "Package size: $([math]::Round($fileSize, 2)) KB"
         } else {
-          Write-Error "Zip file not found!"
+          Write-Error "Package file not found!"
           exit 1
         }
       shell: powershell
@@ -43,6 +49,6 @@ jobs:
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
-        files: DuplicateHider-${{ steps.get_version.outputs.VERSION }}.zip
+        files: felixkmh_DuplicateHider_Plugin_${{ steps.get_version.outputs.VERSION_UNDERSCORES }}.pext
         draft: false
         prerelease: false
