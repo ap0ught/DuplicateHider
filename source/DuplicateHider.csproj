@@ -258,8 +258,8 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Only run PostBuildEvent if Playnite Toolbox exists (local development) -->
   <PropertyGroup>
-    <PostBuildEvent>%25LOCALAPPDATA%25\Playnite\Toolbox.exe pack $(ProjectDir)$(OutDir) $(ProjectDir)bin
-</PostBuildEvent>
+    <PostBuildEvent Condition="Exists('$(LOCALAPPDATA)\Playnite\Toolbox.exe')">$(LOCALAPPDATA)\Playnite\Toolbox.exe pack $(ProjectDir)$(OutDir) $(ProjectDir)bin</PostBuildEvent>
   </PropertyGroup>
 </Project>
