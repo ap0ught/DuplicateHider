@@ -214,6 +214,65 @@ This will:
 2. Create a git tag
 3. Update `CHANGELOG.md`
 
+### Version Compatibility and Playnite SDK
+
+DuplicateHider's version compatibility is tightly coupled to the Playnite SDK version:
+
+| DuplicateHider Version | Playnite Version | PlayniteSDK Version | Key Differences |
+|------------------------|------------------|---------------------|-----------------|
+| 2.x (≤ 2.5.4)         | 8.x              | 5.x                 | Core functionality only |
+| 3.x                    | 9.x              | 6.x                 | Adds UI integration via `GetGameViewControl` |
+
+**Important SDK Differences:**
+
+**Playnite 8 (SDK 5.x):**
+- No `GetGameViewControl` method
+- Limited custom UI integration
+- Different event signatures in some cases
+- Older dialog and notification APIs
+
+**Playnite 9 (SDK 6.x):**
+- Introduces `GetGameViewControl(GetGameViewControlArgs args)` for custom UI elements
+- Enhanced theme integration capabilities
+- Improved extension lifecycle management
+- Better performance for extension UI components
+
+**Code Example - Playnite 9 Specific Feature:**
+
+```csharp
+// This method only exists in Playnite 9 (SDK 6.x+)
+public override Control GetGameViewControl(GetGameViewControlArgs args)
+{
+    if (settings.EnableUiIntegration)
+    {
+        if (args.Name == "SourceSelector")
+        {
+            return new SourceSelector(0, Orientation.Horizontal);
+        }
+        // ... more UI integration code
+    }
+    return null;
+}
+```
+
+If you need to support both versions, consider using conditional compilation:
+
+```csharp
+#if PLAYNITE9
+    public override Control GetGameViewControl(GetGameViewControlArgs args)
+    {
+        // Playnite 9 implementation
+    }
+#endif
+```
+
+Then define the compilation symbol in your `.csproj`:
+```xml
+<PropertyGroup Condition="'$(PlayniteSDKVersion)' == '6'">
+    <DefineConstants>$(DefineConstants);PLAYNITE9</DefineConstants>
+</PropertyGroup>
+```
+
 ## Theme Integration
 
 For theme developers, see the [Theme Integration](README.md#theme-integration) section in the main README.
