@@ -92,6 +92,38 @@ An extension for [Playnite](https://github.com/JosefNemec/Playnite/ "Playnite - 
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C1C6CH5IN)
 
+## Development
+
+This extension follows the [Playnite Extension Development Guidelines](https://api.playnite.link/docs/tutorials/extensions/intro.html).
+
+📖 **[Full Development Documentation](docs/DEVELOPMENT.md)** | 🚀 **[Quick Start Guide](docs/QUICK_START.md)**
+
+### Quick Start
+
+1. Clone the repository
+2. Open `source/DuplicateHider.sln` in Visual Studio
+3. Restore NuGet packages
+4. Build the solution (Release configuration)
+
+The extension requires:
+- .NET Framework 4.6.2
+- PlayniteSDK 6.2.0
+- Visual Studio 2019 or later (or MSBuild)
+
+### Continuous Integration
+
+The project uses GitHub Actions for automated building and releasing:
+- **Build Workflow**: Automatically builds the extension on every push to master and pull requests
+- **Release Workflow**: Automatically creates releases when version tags are pushed
+
+### Contributing
+
+Contributions are welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+For detailed development information, see the [Development Guide](docs/DEVELOPMENT.md).
+
+For localization contributions, visit the [Crowdin project](https://crowdin.com/project/duplicatehider).
+=======
 ## Comparison with DuplicateFinder
 
 Both [DuplicateHider](https://github.com/ap0ught/DuplicateHider) and [DuplicateFinder](https://github.com/ap0ught/Playnite-DuplicateFinder) are Playnite extensions designed to help manage duplicate games in your library, but they take different approaches:

@@ -11,6 +11,7 @@ jobs:
     runs-on: windows-latest
     
     steps:
+
     - uses: actions/checkout@v4
     
     - name: Setup .NET Framework
@@ -20,7 +21,7 @@ jobs:
       run: nuget restore source/DuplicateHider.sln
       
     - name: Build solution
-      run: msbuild source/DuplicateHider.sln /p:Configuration=Release
+      run: msbuild source/DuplicateHider.sln /p:Configuration=Release /p:PostBuildEvent=""
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
