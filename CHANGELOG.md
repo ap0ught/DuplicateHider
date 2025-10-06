@@ -1,3 +1,17 @@
+## v4.0.1 (2025-01-13)
+
+### Major Update - Playnite 11 Compatibility
+
+- **Upgraded PlayniteSDK from 6.2.0 to 6.13.0** for Playnite 11 compatibility
+- Verified compatibility with Playnite 9, 10, and 11
+- Updated version number to 4.0.1 to indicate major compatibility update
+- Updated documentation to reflect Playnite 11 support
+
+### Documentation
+
+- Updated README with Playnite 11 compatibility information
+- Clarified version compatibility matrix (v4.x for Playnite 9-11, v3.x for Playnite 9-10, v2.x for Playnite 8)
+
 ## Unreleased
 
 ### Documentation
